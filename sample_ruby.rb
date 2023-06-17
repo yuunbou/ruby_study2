@@ -1,12 +1,25 @@
-# divmodは商と余を配列で返す
+# 繰り返し処理について復習
 
-puts 14.divmod(3)
+numbers = [1, 2, 3, 4]
 
-# 戻り値を配列のまま受け取る
-quo_rem = 14.divmod(3)
-puts "商=#{quo_rem[0]},余り=#{quo_rem[1]}"
+sum = 0
 
-# 多重代入で別々の変数として受け取る
-quotient, remainder = 14.divmod(3)
-puts "商=#{quotient}, 余り=#{remainder}"
+numbers.each do |n|
+  sum += n
+end
 
+puts sum
+
+# 配列の要素を削除する条件を自由に指定する
+a = [1, 2, 3, 1, 2, 3]
+# 配列から要素２を削除する
+a.delete(2)
+puts a
+
+
+a = [1, 2, 3, 1, 2, 3]
+# 配列の要素を奇数のみ削除する
+a.delete_if do |n|
+  n.odd?
+end
+puts a
