@@ -1,50 +1,24 @@
-# ブロックパラメータとブロック内の変数
+# joinとsum
 
-numbers = [1, 2, 3, 4]
-sum = 0
-numbers.each do |n|
-  sum_value = n.even? ? n * 10 : n
-  sum += sum_value
-end
+chars = ['a', 'b', 'c']
+puts chars.join
+# 区切り文字をハイフンにして各要素を連結する
+puts chars.join('-')
 
-puts sum
+# 先頭に'>'をつけ、各要素を大文字にして連結する
+puts chars.sum('>') { |c| c.upcase }
 
-# do ... end と{}
+data = ['a', 2, 'b', 4]
+# 配列に数値が含まれていても連結可能
+puts data.join
 
-numbers = [1, 2, 3, 4]
-sum = 0
-# do ... end の代わりに{}を使う
-numbers.each { |n|
-  sum += n
-}
+# ＆とシンボルを使ってもっと簡潔にかく
 
-puts sum
+# このコード（Before）
+puts ['ruby', 'java', 'python'].map { |s| s.upcase }
+# 簡潔に書き換え（after）
+puts ['ruby', 'java', 'python'].map(&:upcase)
 
-# ブロックを使う配列のメソッド
-# map/collect
-numbers = [1, 2, 3, 4, 5]
-# ブロックの戻り値が新しい配列の各要素になる
-new_numbers = numbers.map { |n| n * 10 }
-puts new_numbers
-
-# select/find_all/reject
-numbers = [1, 2, 3, 4, 5, 6]
-# ブロックの戻り値が真になった要素だけが集められる
-even_numbers = numbers.select { |n| n.even? }
-puts even_numbers
-
-numbers = [1, 2, 3, 4, 5, 6]
-# ３の倍数を除外する（３の倍数以外を集める）
-non_multiples_of_three = numbers.reject { |n| n % 3 == 0 }
-puts non_multiples_of_three
-
-# find/detect
-numbers = [1, 2, 3, 4, 5, 6]
-# ブロックの戻り値が最初に真になった要素を返す
-even_number = numbers.find { |n| n.even? }
-puts even_number
-
-# sum
-numbers = [1, 2, 3, 4, 5]
-puts numbers.sum
+puts [1, 2, 3, 4, 5, 6].select { |n| n.odd? }
+puts [1, 2, 3, 4, 5, 6].select(&:odd?)
 
